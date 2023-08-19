@@ -25,8 +25,6 @@ int print_format(char specifier, va_list ap)
 		b += print_digit((long)va_arg(ap, int), 10);
 	else if (specifier == 'x')
 		b += print_digit((long)va_arg(ap, unsigned int), 16);
-	/* e if (specifier == 'r')
-		b += print_reverse_str(char *s); */
 	else
 	{
 		_putchar('%');
@@ -67,23 +65,6 @@ int print_str(char *str)
 }
 
 /**
- * print_reverse_str - reverses a string of chars
- * @char: char to reverse
- *
- * Return: s
- */ 
-/*int print_reverse_str(char *str)
-{
-	int s;
-
-	for (s = 0; str[s] != '\0'; ++s)
-		++str;
-	for (s -= 1; s >= 0; --s)
-		print_char((int)str[s]);
-	return s;
-} */
-
-/**
  * print_digit - prints decimal or hexadecimal number(s)
  * @n: number to print
  * @base: base of n
@@ -101,16 +82,18 @@ int print_digit(long n, int base)
 	if (n < 0)
 	{
 		write(1, "-", 1);
-		return print_digit(-n, base) + 1;
+		return (print_digit(-n, base) + 1);
 	}
 	else if (n < base)
-		return _putchar(symbols[n]);
+	{
+		return (_putchar(symbols[n]));
+	}
 	else
 	{
 		count = print_digit(n / base, base);
-		return count + print_digit(n % base, base);
+		return (count + print_digit(n % base, base));
 	}
-} 
+}
 
 /**
  * _printf - our printf function
@@ -127,13 +110,13 @@ int _printf(const char *format, ...)
 	va_start(ap, format);
 
 	a = 0;
-	while(*format != '\0')
+	while (*format != '\0')
 	{
 		if (*format == '%')
 			a += print_format(*(++format), ap);
 		else
 		{
-			a += write(1, format, 1); 
+			a += write(1, format, 1);
 			++format;
 		}
 	}
