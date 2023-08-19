@@ -56,10 +56,10 @@ int print_str(char *str)
 {
 	int s;
 
-	for (s = 0; str[s] != '\0'; ++s)
+	for (s = 0; str[s] != '\0'; s++)
 	{
 		_putchar((int)*str);
-		++str;
+		str++;
 	}
 	return (s);
 }
@@ -113,11 +113,11 @@ int _printf(const char *format, ...)
 	while (*format != '\0')
 	{
 		if (*format == '%')
-			a += print_format(*(++format), ap);
+			a += print_format(*(format++), ap);
 		else
 		{
 			a += write(1, format, 1);
-			++format;
+			format++;
 		}
 	}
 	va_end(ap);
