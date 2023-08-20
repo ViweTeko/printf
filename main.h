@@ -8,5 +8,6 @@ int print_str(char *str);
 int print_digit(long n, int base);
 int _putchar(char c);
 int print_reverse_str(char *);
+int rev_str(const char *format, ...);
 
 #endif
