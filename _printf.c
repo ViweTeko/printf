@@ -66,6 +66,7 @@ int print_rev_str(const char *format, ...)
 	va_list type;
 
 	va_start(type, format);
+
 	if (format)
 	{
 		while (format[i])
@@ -83,9 +84,9 @@ int print_rev_str(const char *format, ...)
 					{
 					}
 					for (s -= 1; s >= 0; --s)
-						{
-							_putchar((int)rev[s]);
-						}
+					{
+						_putchar((int)rev[s]);
+					}
 					}
 					break;
 					}
