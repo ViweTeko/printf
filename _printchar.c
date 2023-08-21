@@ -4,6 +4,12 @@
 #include <stdarg.h>
 #include <unistd.h>
 
+/**
+ * _printf - returns output according to specifier
+ * @format: chararcter string
+ * Return: i
+ */
+
 int _printf(const char *format, ...)
 {
 	int i = 0;
@@ -27,7 +33,7 @@ int _printf(const char *format, ...)
 
 			if  (*format == '\0')
 				break;
-			
+
 			i += spec(*format, args);
 			format++;
 		}
@@ -35,6 +41,13 @@ int _printf(const char *format, ...)
 	va_end(args);
 	return (i);
 }
+
+/**
+ * spec - checks format specifiers
+ * @s: format specifier
+ * @ap: argument pointer
+ * Return: i
+ */
 
 int spec(char s, va_list ap)
 {
