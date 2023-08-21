@@ -15,7 +15,7 @@ int _printf(const char *format, ...)
 	va_start(args, format);
 	while (*format)
 	{
-		if(*format != '%')
+		if (*format != '%')
 		{
 			write(1, format, 1);
 			i++;
@@ -33,7 +33,7 @@ int _printf(const char *format, ...)
 		}
 	}
 	va_end(args);
-	return(i);
+	return (i);
 }
 
 int spec(char s, va_list ap)
