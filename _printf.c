@@ -56,9 +56,8 @@ int _printf(const char *format, ...)
 
 			else
 			{
-				write (1, "Unsupported format specifier: ", 30);
 				write(1, format, 1);
-				i +=31;
+				i += 2;
 			}
 			format++;
 		}

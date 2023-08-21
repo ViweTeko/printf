@@ -21,19 +21,27 @@ int print_format(char specifier, va_list ap)
 		b += _putchar(va_arg(ap, int));
 	else if (specifier == 's')
 		b += print_str(va_arg(ap, char *));
-	else if (specifier == 'd')
+	else if (specifier == 'd' || specifier == 'i')
 		b += print_digit((long)va_arg(ap, int), 10);
 	else if (specifier == 'x')
 		b += print_digit((long)va_arg(ap, unsigned int), 16);
+	else if (specifier == '%')
+		b += print_percentchar(va_arg(ap, int));
 	else
 	{
-		_putchar('%');
-		b += _putchar('r');
+		write(1, "Unknown: ", 8);
 		b += 1;
 	}
 	return (b);
 }
 
+int print_percentchar()
+{
+	if ('%%')
+
+	_putchar(37);
+	return (0);
+}
 /**
  * _putchar - prints a char
  * @c: char
@@ -107,15 +115,14 @@ int _printf(const char *format, ...)
 	va_list ap;
 	int a;
 
-	va_start(ap, format);
-
 	if (format == NULL)
 	{
 		return (-1);
 	}
 
+	va_start(ap, format);
 	a = 0;
-	while (*format != '\0')
+	while (*format)
 	{
 		if (*format == '%')
 		{
