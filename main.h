@@ -1,15 +1,13 @@
 #ifndef MAIN_H
 #define MAIN_H
-
 #include <stdarg.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
 
-int _printf(const char *format, ...);
-int print_format(char specifier, va_list ap);
-int print_char(int c);
-int print_str(char *str);
-int print_digit(long n, int base);
 int _putchar(char c);
-int print_reverse_str(char *);
-int rev_str(const char *format, ...);
+int _printf(const char *format, ...);
+int printstring(const char *format, ...);
+int spec(char s, va_list ap);
 
 #endif
