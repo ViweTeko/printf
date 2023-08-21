@@ -76,6 +76,15 @@ int spec(char s, va_list ap)
 		write(1, &s, 1);
 		i++;
 	}
+	else if (s == 'd' || s == 'i')
+	{
+		int d = va_arg(ap, int);
+		char num_str[15];
+		int num_len = sprintf(num_str, "%d", d);
+
+		write(1, num_str, num_len);
+		i += num_len;
+	}
 	else
 	{
 		write(1, &s, 1);
